@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   height: calc(100vh - 64px);
   background-color: #e5e5e5;
   overflow-y: scroll;
+  position: relative;
 `;
 
 export const Container = styled.main`
@@ -86,5 +87,21 @@ export const ListItems = styled.div`
     li {
       line-height: 30px;
     }
+  }
+`;
+
+export const ButtonBack = styled.button`
+  a {
+    text-decoration: none;
+    display: block;
+    width: 70px;
+    background-color: #fff;
+    color: #555555;
+    padding: 6px;
+    border-radius: 4px;
+    transition: 0.3s;
+    position: absolute;
+    top: 8px;
+    right: 8px;
   }
 `;

@@ -68,6 +68,9 @@ export const Character = () => {
 
   return (
     <S.Wrapper>
+      <S.ButtonBack>
+        <Link to="/">Voltar</Link>
+      </S.ButtonBack>
       <S.Container>
         <S.Header>
           <img
