@@ -13,6 +13,23 @@ export const Container = styled.main`
   margin: 0 auto;
 `;
 
+export const NotFound = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #555555;
+
+  button {
+    margin-top: 20px;
+    padding: 8px 24px;
+    background-color: #fff;
+    color: #555555;
+    border-radius: 4px;
+  }
+`;
+
 export const Header = styled.div`
   display: flex;
   img {

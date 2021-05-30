@@ -2,43 +2,48 @@ import axios from "axios";
 import md5 from "md5";
 import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { useCharacters } from "../../contexts/CharactersContext";
 import * as S from "./styles";
 
 export const Character = () => {
   const { setIsLoading } = useCharacters();
   const [character, setCharacter] = useState(null);
+  const [notFound, setNotFound] = useState(null);
   const [activeButton, setActiveButton] = useState("series");
   let { id } = useParams();
 
   const fetchCharacter = useCallback(
-    async ({ characterId }) => {
+    async ({ id }) => {
       setIsLoading(true);
       const timestamp = new Date().getTime().toString();
       const hash = md5(
         `${timestamp}${process.env.REACT_APP_MARVEL_PRIVATE_KEY}${process.env.REACT_APP_MARVEL_PUBLIC_KEY}`
       );
 
-      const res = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/${characterId}`,
-        {
+      axios
+        .get(`${process.env.REACT_APP_BASE_URL}/${id}`, {
           params: {
             apikey: process.env.REACT_APP_MARVEL_PUBLIC_KEY,
             ts: timestamp,
             hash: hash,
           },
-        }
-      );
-
-      setCharacter(res.data.data.results[0]);
-
-      setIsLoading(false);
+        })
+        .then((res) => {
+          setCharacter(res.data.data.results[0]);
+        })
+        .catch(() => {
+          setNotFound(true);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     },
     [setIsLoading]
   );
 
   useEffect(() => {
-    fetchCharacter({ characterId: id });
+    fetchCharacter({ id });
   }, [fetchCharacter, id]);
 
   const title = {
@@ -47,7 +52,20 @@ export const Character = () => {
     stories: "Histórias",
   };
 
+  if (notFound)
+    return (
+      <S.Wrapper>
+        <S.NotFound>
+          <h1>Personagem não encontrado</h1>
+          <Link to="/">
+            <button>Voltar</button>
+          </Link>
+        </S.NotFound>
+      </S.Wrapper>
+    );
+
   if (!character) return null;
+
   return (
     <S.Wrapper>
       <S.Container>
