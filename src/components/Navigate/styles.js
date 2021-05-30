@@ -8,6 +8,9 @@ export const Wrapper = styled.nav`
   height: 90px;
   background-color: #fff;
   overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   ul {
     display: flex;
     list-style: none;
