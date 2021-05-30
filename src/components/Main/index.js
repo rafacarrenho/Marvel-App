@@ -1,9 +1,10 @@
 import React from "react";
 import * as S from "./styles.js";
 import { FaSearch } from "react-icons/fa";
+import { useCharacters } from "../../contexts/CharactersContext.jsx";
 
-export const Main = ({ characters }) => {
-  console.log(characters);
+export const Main = () => {
+  const { characters, finder, setFinder } = useCharacters();
   return (
     <S.Wrapper>
       <S.Container>
@@ -12,7 +13,14 @@ export const Main = ({ characters }) => {
           <label>
             Nome do personagem
             <div>
-              <input type="text" placeholder="Search" />
+              <input
+                type="text"
+                placeholder="Search"
+                id="finder"
+                name="finder"
+                value={finder}
+                onChange={({ target }) => setFinder(target.value)}
+              />
               <FaSearch />
             </div>
             <S.CharactersTable>
@@ -42,12 +50,12 @@ export const Main = ({ characters }) => {
                       </td>
                       <td>
                         {character.series.items.slice(0, 3).map((serie) => {
-                          return <span>{serie.name}</span>;
+                          return <span key={serie.name}>{serie.name}</span>;
                         })}
                       </td>
                       <td>
                         {character.events.items.slice(0, 3).map((event) => {
-                          return <span>{event.name}</span>;
+                          return <span key={event.name}>{event.name}</span>;
                         })}
                       </td>
                     </S.CharacterItem>

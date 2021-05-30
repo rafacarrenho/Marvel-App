@@ -45,6 +45,20 @@ export const Container = styled.main`
       }
     }
   }
+
+  @media screen and (max-width: 500px) {
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      text-align: center;
+
+      div {
+        max-width: 100%;
+      }
+    }
+  }
 `;
 
 export const CharactersTable = styled.table`
@@ -53,6 +67,12 @@ export const CharactersTable = styled.table`
   text-align: left;
   border-collapse: separate;
   border-spacing: 0 1em;
+
+  @media screen and (max-width: 500px) {
+    th:not(:first-child) {
+      display: none;
+    }
+  }
 `;
 
 export const CharacterItem = styled.tr`
@@ -65,13 +85,14 @@ export const CharacterItem = styled.tr`
     height: 88px;
 
     &:last-child {
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
     }
 
     &:first-child {
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+
       div {
         display: flex;
         align-items: center;
@@ -82,9 +103,12 @@ export const CharacterItem = styled.tr`
       }
     }
 
-    /* &:not(:first-child) {
-      display: none;
-    } */
+    @media screen and (max-width: 500px) {
+      &:not(:first-child) {
+        display: none;
+      }
+      border-radius: 5px;
+    }
   }
 
   span {

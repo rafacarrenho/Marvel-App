@@ -5,3 +5,7 @@
   margin: 0;
   font-family: "PT Sans Caption", sans-serif;
 }
+
+button {
+  cursor: pointer;
+}
