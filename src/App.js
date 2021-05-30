@@ -1,17 +1,18 @@
 import { Header } from "./components/Header";
-import "./app.css";
-import { Main } from "./components/Main";
-import { Navigate } from "./components/Navigate";
 import { Loader } from "./components/Loader";
 import { PlayerContextProvider } from "./contexts/CharactersContext";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Routes } from "./routes";
+import "./app.css";
 
 function App() {
   return (
     <PlayerContextProvider>
-      <Header />
-      <Main />
-      <Navigate />
-      <Loader />
+      <Router>
+        <Header />
+        <Routes />
+        <Loader />
+      </Router>
     </PlayerContextProvider>
   );
 }

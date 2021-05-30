@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Logo from "../../assets/img/logo.svg";
 import * as S from "./styles.js";
 
@@ -6,7 +7,9 @@ export const Header = () => {
   return (
     <S.Wrapper>
       <S.Logo>
-        <img className="logo-objective" src={Logo} alt="Objective" />
+        <Link to="/">
+          <img className="logo-objective" src={Logo} alt="Objective" />
+        </Link>
       </S.Logo>
       <S.Candidate>
         <div>

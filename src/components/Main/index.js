@@ -2,9 +2,16 @@ import React from "react";
 import * as S from "./styles.js";
 import { FaSearch } from "react-icons/fa";
 import { useCharacters } from "../../contexts/CharactersContext.jsx";
+import { useHistory } from "react-router";
 
 export const Main = () => {
   const { characters, finder, setFinder } = useCharacters();
+  let history = useHistory();
+
+  const handleCharacter = (id) => {
+    history.push(`/personagem/${id}`);
+  };
+
   return (
     <S.Wrapper>
       <S.Container>
@@ -34,7 +41,10 @@ export const Main = () => {
               <tbody>
                 {characters?.map((character) => {
                   return (
-                    <S.CharacterItem key={character.id}>
+                    <S.CharacterItem
+                      key={character.id}
+                      onClick={() => handleCharacter(character.id)}
+                    >
                       <td>
                         <div>
                           <img

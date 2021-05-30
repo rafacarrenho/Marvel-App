@@ -79,6 +79,7 @@ export const CharacterItem = styled.tr`
   width: 100%;
   text-align: left;
   background-color: white;
+  cursor: pointer;
 
   td {
     padding: 4px;

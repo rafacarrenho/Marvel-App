@@ -1,12 +1,6 @@
 import axios from "axios";
 import md5 from "md5";
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useState,
-  useEffect,
-} from "react";
+import React, { createContext, useCallback, useContext, useState } from "react";
 
 export const CharactersContext = createContext({});
 
@@ -50,23 +44,16 @@ export const PlayerContextProvider = ({ children }) => {
     setIsLoading(false);
   }, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setOffset(0);
-      fetchData({ finder });
-    }, 400);
-
-    return () => clearTimeout(timer);
-  }, [fetchData, finder]);
-
   return (
     <CharactersContext.Provider
       value={{
         finder,
+        setCharacters,
         setFinder,
         characters,
         fetchData,
         isLoading,
+        setIsLoading,
         limit,
         total,
         offset,
