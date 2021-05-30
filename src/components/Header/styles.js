@@ -19,16 +19,25 @@ export const Logo = styled.div`
 export const Candidate = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 8px;
+  text-align: right;
   div {
     display: flex;
     gap: 8px;
     align-items: center;
   }
+  @media screen and (max-width: 500px) {
+    div {
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  }
 `;
 
 export const CandidateThumb = styled.span`
-  height: 24px;
+  height: 32px;
+  width: 32px;
   display: flex;
   align-items: center;
   justify-content: center;

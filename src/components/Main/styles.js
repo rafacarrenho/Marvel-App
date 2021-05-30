@@ -37,7 +37,6 @@ export const Container = styled.main`
         border-radius: 4px;
         outline: 0;
       }
-
       svg {
         position: absolute;
         top: 50%;
@@ -45,5 +44,59 @@ export const Container = styled.main`
         right: 8px;
       }
     }
+  }
+`;
+
+export const CharactersTable = styled.table`
+  margin-top: 20px;
+  width: 100%;
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0 1em;
+`;
+
+export const CharacterItem = styled.tr`
+  width: 100%;
+  text-align: left;
+  background-color: white;
+
+  td {
+    padding: 4px;
+    height: 88px;
+
+    &:last-child {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    &:first-child {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      div {
+        display: flex;
+        align-items: center;
+
+        strong {
+          margin-left: 16px;
+        }
+      }
+    }
+
+    /* &:not(:first-child) {
+      display: none;
+    } */
+  }
+
+  span {
+    display: block;
+  }
+
+  img {
+    height: 48px;
+    width: 48px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: inline-block;
+    margin-left: 16px;
   }
 `;

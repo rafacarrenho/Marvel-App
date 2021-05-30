@@ -4,8 +4,11 @@ import { Main } from "./components/Main";
 import { Navigate } from "./components/Navigate";
 import axios from "axios";
 import md5 from "md5";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [characters, setCharacters] = useState(null);
+
   const fetchData = async () => {
     const timestamp = new Date().getTime().toString();
     const hash = md5(
@@ -20,14 +23,18 @@ function App() {
         limit: 10,
       },
     });
-    console.log(res);
+
+    setCharacters(res.data.data.results);
   };
 
-  fetchData();
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
       <Header />
-      <Main />
+      <Main characters={characters} />
       <Navigate />
     </>
   );
