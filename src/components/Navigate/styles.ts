@@ -23,7 +23,11 @@ export const Wrapper = styled.nav`
   }
 `;
 
-export const PaginationItem = styled.li`
+type PaginationItemProps = {
+  isActive: boolean;
+};
+
+export const PaginationItem = styled.li<PaginationItemProps>`
   ${({ isActive }) => css`
     button {
       background: ${isActive ? "#167abc" : "#f5f5f5"};

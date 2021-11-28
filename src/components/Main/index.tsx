@@ -1,14 +1,13 @@
-import React from "react";
-import * as S from "./styles.js";
+import * as S from "./styles";
 import { FaSearch } from "react-icons/fa";
-import { useCharacters } from "../../contexts/CharactersContext.jsx";
+import { useCharacters } from "../../contexts/CharactersContext";
 import { useHistory } from "react-router";
 
 export const Main = () => {
   const { characters, finder, setFinder } = useCharacters();
   let history = useHistory();
 
-  const handleCharacter = (id) => {
+  const handleCharacter = (id: number) => {
     history.push(`/personagem/${id}`);
   };
 

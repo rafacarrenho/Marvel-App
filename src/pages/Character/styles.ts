@@ -63,7 +63,11 @@ export const Header = styled.div`
   }
 `;
 
-export const Button = styled.button`
+type ButtonProps = {
+  isActive: boolean;
+};
+
+export const Button = styled.button<ButtonProps>`
   ${({ isActive }) => css`
     display: block;
     width: 200px;

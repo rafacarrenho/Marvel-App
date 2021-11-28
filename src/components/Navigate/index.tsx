@@ -5,8 +5,8 @@ import {
   HiOutlineChevronDoubleLeft,
   HiOutlineChevronLeft,
 } from "react-icons/hi";
-import { useCharacters } from "../../contexts/CharactersContext.jsx";
-import * as S from "./styles.js";
+import { useCharacters } from "../../contexts/CharactersContext";
+import * as S from "./styles";
 
 export const Navigate = () => {
   const { limit, total, offset, setOffset, fetchData, finder } =
@@ -17,7 +17,7 @@ export const Navigate = () => {
   const pages = Math.ceil(total / limit);
   const first = Math.max(current - maxLeft, 1);
 
-  function onPageChange(page) {
+  function onPageChange(page: number) {
     const offset = (page - 1) * limit;
     setOffset(offset);
     fetchData({ offset, finder });

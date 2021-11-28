@@ -1,17 +1,19 @@
 import axios from "axios";
 import md5 from "md5";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { useCharacters } from "../../contexts/CharactersContext";
+import { CharacterType, useCharacters } from "../../contexts/CharactersContext";
 import * as S from "./styles";
+
+type ActiveButton = "series" | "events" | "stories";
 
 export const Character = () => {
   const { setIsLoading } = useCharacters();
-  const [character, setCharacter] = useState(null);
-  const [notFound, setNotFound] = useState(null);
-  const [activeButton, setActiveButton] = useState("series");
-  let { id } = useParams();
+  const [character, setCharacter] = useState<CharacterType | null>(null);
+  const [notFound, setNotFound] = useState(false);
+  const [activeButton, setActiveButton] = useState<ActiveButton>("series");
+  let { id }: { id: string } = useParams();
 
   const fetchCharacter = useCallback(
     async ({ id }) => {
