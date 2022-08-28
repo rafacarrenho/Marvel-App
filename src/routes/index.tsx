@@ -1,6 +1,6 @@
 import { Switch, Route, Redirect } from "react-router-dom";
-import { Character } from "../pages/Character";
-import { Home } from "../pages/Home";
+import { Character } from "pages/Character";
+import { Home } from "pages/Home";
 
 export const Routes = () => (
   <Switch>

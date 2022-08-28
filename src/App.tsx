@@ -1,19 +1,23 @@
-import { Header } from "./components/Header";
-import { Loader } from "./components/Loader";
-import { PlayerContextProvider } from "./contexts/CharactersContext";
 import { BrowserRouter as Router } from "react-router-dom";
-import { Routes } from "./routes";
+import { QueryClientProvider } from "react-query";
+
+import { Header } from "components/Header";
+import { HomeContextProvider } from "contexts/HomeContext";
+import { Routes } from "routes";
+import { queryClient } from "services/queryClients";
+
 import "./app.css";
 
 function App() {
   return (
-    <PlayerContextProvider>
-      <Router>
-        <Header />
-        <Routes />
-        <Loader />
-      </Router>
-    </PlayerContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <HomeContextProvider>
+        <Router>
+          <Header />
+          <Routes />
+        </Router>
+      </HomeContextProvider>
+    </QueryClientProvider>
   );
 }
 

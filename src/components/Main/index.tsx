@@ -1,10 +1,15 @@
 import * as S from "./styles";
 import { FaSearch } from "react-icons/fa";
-import { useCharacters } from "../../contexts/CharactersContext";
 import { useHistory } from "react-router";
+import { CharacterType } from "services/characters/types";
 
-export const Main = () => {
-  const { characters, finder, setFinder } = useCharacters();
+type MainProps = {
+  characters: CharacterType[] | undefined;
+  filter: string;
+  setFilter: (filter: string) => void;
+};
+
+export const Main = ({ characters, filter, setFilter }: MainProps) => {
   let history = useHistory();
 
   const handleCharacter = (id: number) => {
@@ -24,8 +29,8 @@ export const Main = () => {
                 placeholder="Search"
                 id="finder"
                 name="finder"
-                value={finder}
-                onChange={({ target }) => setFinder(target.value)}
+                value={filter}
+                onChange={({ target }) => setFilter(target.value)}
               />
               <FaSearch />
             </div>

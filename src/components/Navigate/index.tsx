@@ -1,27 +1,30 @@
-import React from "react";
 import {
   HiOutlineChevronDoubleRight,
   HiOutlineChevronRight,
   HiOutlineChevronDoubleLeft,
   HiOutlineChevronLeft,
 } from "react-icons/hi";
-import { useCharacters } from "../../contexts/CharactersContext";
 import * as S from "./styles";
 
-export const Navigate = () => {
-  const { limit, total, offset, setOffset, fetchData, finder } =
-    useCharacters();
+type NavigateProps = {
+  total: number;
+  offset: number;
+  onChange: (value: number) => void;
+};
+
+export const Navigate = ({ total, offset, onChange }: NavigateProps) => {
   const maxItems = 5;
+  const limit = 10;
   const maxLeft = (maxItems - 1) / 2;
   const current = offset ? offset / limit + 1 : 1;
   const pages = Math.ceil(total / limit);
   const first = Math.max(current - maxLeft, 1);
 
   function onPageChange(page: number) {
-    const offset = (page - 1) * limit;
-    setOffset(offset);
-    fetchData({ offset, finder });
+    onChange((page - 1) * limit);
   }
+
+  if (!total) return null;
 
   return (
     <S.Wrapper>
