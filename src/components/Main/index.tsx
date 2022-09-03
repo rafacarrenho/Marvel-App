@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import { FaSearch } from "react-icons/fa";
-import { useHistory } from "react-router";
 import { CharacterType } from "services/characters/types";
+import { useMain } from "./useMain";
 
 type MainProps = {
   characters: CharacterType[] | undefined;
@@ -10,11 +10,7 @@ type MainProps = {
 };
 
 export const Main = ({ characters, filter, setFilter }: MainProps) => {
-  let history = useHistory();
-
-  const handleCharacter = (id: number) => {
-    history.push(`/personagem/${id}`);
-  };
+  const { handleCharacter } = useMain();
 
   return (
     <S.Wrapper>
