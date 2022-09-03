@@ -5,31 +5,26 @@ import {
   HiOutlineChevronLeft,
 } from "react-icons/hi";
 import * as S from "./styles";
+import { NavigateProps, usePagination } from "./usePagination";
 
-type NavigateProps = {
-  total: number;
-  offset: number;
-  onChange: (value: number) => void;
-};
-
-export const Navigate = ({ total, offset, onChange }: NavigateProps) => {
-  const maxItems = 5;
-  const limit = 10;
-  const maxLeft = (maxItems - 1) / 2;
-  const current = offset ? offset / limit + 1 : 1;
-  const pages = Math.ceil(total / limit);
-  const first = Math.max(current - maxLeft, 1);
-
-  function onPageChange(page: number) {
-    onChange((page - 1) * limit);
-  }
+export const Pagination = (props: NavigateProps) => {
+  const {
+    total,
+    onPageChange,
+    maxItems,
+    current,
+    pages,
+    first,
+    shouldRenderBack,
+    shouldRenderNext,
+  } = usePagination(props);
 
   if (!total) return null;
 
   return (
     <S.Wrapper>
       <ul>
-        {current === 1 ? undefined : (
+        {shouldRenderBack && (
           <>
             <S.PaginationArrow>
               <button onClick={() => onPageChange(1)}>
@@ -58,7 +53,7 @@ export const Navigate = ({ total, offset, onChange }: NavigateProps) => {
             );
           })}
 
-        {current >= pages ? undefined : (
+        {shouldRenderNext && (
           <>
             <S.PaginationArrow>
               <button
