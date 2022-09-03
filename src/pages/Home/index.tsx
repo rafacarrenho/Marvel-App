@@ -1,24 +1,19 @@
 import { Loader } from "components/Loader";
 import { Main } from "components/Main";
-import { Navigate } from "components/Navigate";
-import { useHome } from "contexts/HomeContext";
-import { useCharacters } from "services/characters/useCharacters";
+import { Pagination } from "components/Pagination";
+
+import { useHome } from "./useHome";
 
 export const Home = () => {
-  const { filter, setFilter, offset, setOffset, debouncedFilter } = useHome();
-
-  const { data, isLoading } = useCharacters(offset, debouncedFilter);
-
-  const characters = data?.characters;
-  const totalCharacters = data?.totalCharacters || 0;
-
-  const handleChangeOffset = (value: number) => {
-    setOffset(value);
-  };
-
-  const handleChangeFilter = (value: string) => {
-    setFilter(value);
-  };
+  const {
+    filter,
+    offset,
+    isLoading,
+    characters,
+    totalCharacters,
+    handleChangeFilter,
+    handleChangeOffset,
+  } = useHome();
 
   return (
     <>
@@ -27,7 +22,7 @@ export const Home = () => {
         filter={filter}
         setFilter={handleChangeFilter}
       />
-      <Navigate
+      <Pagination
         total={totalCharacters}
         offset={offset}
         onChange={handleChangeOffset}
