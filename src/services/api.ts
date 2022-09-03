@@ -3,9 +3,7 @@ import md5 from "md5";
 
 const ONE_SECOND = 1000;
 const CHARACTERS_LIMIT = 10;
-
 const timestamp = new Date().getTime().toString();
-
 const hash = md5(
   `${timestamp}${process.env.REACT_APP_MARVEL_PRIVATE_KEY}${process.env.REACT_APP_MARVEL_PUBLIC_KEY}`
 );

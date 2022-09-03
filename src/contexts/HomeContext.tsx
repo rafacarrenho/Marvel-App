@@ -52,6 +52,6 @@ export const HomeContextProvider: React.FC<HomeContextProviderProps> = ({
   );
 };
 
-export const useHome = () => {
+export const useHomeContext = () => {
   return useContext(HomeContext);
 };
