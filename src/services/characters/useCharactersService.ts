@@ -30,7 +30,7 @@ export async function getCharacters(
 
 const TEN_MINUTES = 1000 * 60 * 10;
 
-export const useCharacters = (offset: number, filter: string) => {
+export const useCharactersService = (offset: number, filter: string) => {
   return useQuery(
     ["characters", { offset, filter }],
     () => getCharacters(offset, filter),

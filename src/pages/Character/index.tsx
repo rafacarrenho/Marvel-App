@@ -1,24 +1,13 @@
-import { useState } from "react";
-import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
 import { Loader } from "components/Loader";
-import { useCharacter } from "services/characters/useCharacter";
-import * as S from "./styles";
 
-type ActiveButton = "series" | "events" | "stories";
+import * as S from "./styles";
+import { CharacterTabEnum, useCharacter } from "./useCharacter";
 
 export const Character = () => {
-  const [activeButton, setActiveButton] = useState<ActiveButton>("series");
-  let { id }: { id: string } = useParams();
-
-  const { data: character, error, isLoading } = useCharacter(id);
-
-  const title = {
-    series: "Series",
-    events: "Eventos",
-    stories: "Histórias",
-  };
+  const { title, error, isLoading, character, activeButton, setActiveButton } =
+    useCharacter();
 
   if (error)
     return (
@@ -50,20 +39,20 @@ export const Character = () => {
           <div>
             <h1>{character.name}</h1>
             <S.Button
-              isActive={activeButton === "series"}
-              onClick={() => setActiveButton("series")}
+              isActive={activeButton === CharacterTabEnum.series}
+              onClick={() => setActiveButton(CharacterTabEnum.series)}
             >
               Series
             </S.Button>
             <S.Button
-              isActive={activeButton === "events"}
+              isActive={activeButton === CharacterTabEnum.events}
               onClick={() => setActiveButton("events")}
             >
               Eventos
             </S.Button>
             <S.Button
-              isActive={activeButton === "stories"}
-              onClick={() => setActiveButton("stories")}
+              isActive={activeButton === CharacterTabEnum.stories}
+              onClick={() => setActiveButton(CharacterTabEnum.stories)}
             >
               Histórias
             </S.Button>

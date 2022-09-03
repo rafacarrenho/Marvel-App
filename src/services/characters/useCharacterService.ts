@@ -12,7 +12,7 @@ export async function getCharacter(
 
 const TEN_MINUTES = 1000 * 60 * 10;
 
-export const useCharacter = (characterId: string) => {
+export const useCharacterService = (characterId: string) => {
   return useQuery(
     ["characters", characterId],
     () => getCharacter(characterId),
