@@ -1,10 +1,10 @@
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export const useMain = () => {
-  let history = useHistory();
+  const navigate = useNavigate();
 
   const handleCharacter = (id: number) => {
-    history.push(`/personagem/${id}`);
+    navigate(`/personagem/${id}`);
   };
 
   return { handleCharacter };

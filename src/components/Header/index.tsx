@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import Logo from "assets/img/logo.svg";
 import * as S from "./styles";
+import { Logo } from "assets/icons/Logo";
 
 export const Header = () => {
   return (
     <S.Wrapper>
       <S.Logo>
         <Link to="/">
-          <img className="logo-objective" src={Logo} alt="Objective" />
+          <Logo />
         </Link>
       </S.Logo>
       <S.Candidate>

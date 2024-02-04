@@ -20,7 +20,11 @@ export const useCharacter = () => {
   );
   let { id } = useParams<CharacterParams>();
 
-  const { data: character, error, isLoading } = useCharacterService(id);
+  const {
+    data: character,
+    error,
+    isLoading,
+  } = useCharacterService(id as string);
 
   const title = {
     series: "Series",
