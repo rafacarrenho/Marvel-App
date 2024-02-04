@@ -1,7 +1,7 @@
 import axios from "axios";
 import md5 from "md5";
 
-const ONE_SECOND = 1000;
+const TIMEOUT = 10000; // 10 seconds
 const CHARACTERS_LIMIT = 10;
 const timestamp = new Date().getTime().toString();
 const hash = md5(
@@ -10,7 +10,7 @@ const hash = md5(
 
 export const api = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
-  timeout: ONE_SECOND,
+  timeout: TIMEOUT,
   params: {
     apikey: process.env.REACT_APP_MARVEL_PUBLIC_KEY!,
     ts: timestamp,
