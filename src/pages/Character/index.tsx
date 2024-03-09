@@ -4,6 +4,7 @@ import { Loader } from "components/Loader";
 
 import * as S from "./styles";
 import { CharacterTabEnum, useCharacter } from "./useCharacter";
+import { Container } from "components/Container";
 
 export const Character = () => {
   const { title, error, isLoading, character, activeButton, setActiveButton } =
@@ -30,7 +31,7 @@ export const Character = () => {
       <S.ButtonBack>
         <Link to="/">Voltar</Link>
       </S.ButtonBack>
-      <S.Container>
+      <Container>
         <S.Header>
           <img
             src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
@@ -66,7 +67,7 @@ export const Character = () => {
             ))}
           </ul>
         </S.ListItems>
-      </S.Container>
+      </Container>
     </S.Wrapper>
   );
 };

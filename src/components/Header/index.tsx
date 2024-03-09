@@ -1,22 +1,24 @@
 import { Link } from "react-router-dom";
 import * as S from "./styles";
-import { Logo } from "assets/icons/Logo";
+import LogoMarvel from "assets/images/logo-marvel.png";
 
 export const Header = () => {
   return (
     <S.Wrapper>
-      <S.Logo>
+      <S.HeaderContainer>
         <Link to="/">
-          <Logo />
+          <S.Logo
+            src={LogoMarvel}
+            width={132}
+            height={99}
+            alt="Logo escrito Marvel em cor branca com fundo vermelho"
+          />
         </Link>
-      </S.Logo>
-      <S.Candidate>
-        <div>
-          <strong>Rafael Carrenho</strong>
-          <span>Teste de Front-end</span>
-        </div>
-        <S.CandidateThumb>RC</S.CandidateThumb>
-      </S.Candidate>
+        <S.OwnerWrapper to="https://rcarrenho.com.br">
+          <S.OwnerName>Rafael Carrenho</S.OwnerName>
+          <S.OwnerThumb>RC</S.OwnerThumb>
+        </S.OwnerWrapper>
+      </S.HeaderContainer>
     </S.Wrapper>
   );
 };

@@ -8,12 +8,6 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
-export const Container = styled.main`
-  padding: 24px;
-  max-width: 1140px;
-  margin: 0 auto;
-`;
-
 export const NotFound = styled.div`
   display: flex;
   flex-direction: column;

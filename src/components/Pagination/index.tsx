@@ -27,12 +27,18 @@ export const Pagination = (props: NavigateProps) => {
         {shouldRenderBack && (
           <>
             <S.PaginationArrow>
-              <button onClick={() => onPageChange(1)}>
+              <button
+                onClick={() => onPageChange(1)}
+                aria-label="Primeira página"
+              >
                 <HiOutlineChevronDoubleLeft />
               </button>
             </S.PaginationArrow>
             <S.PaginationArrow>
-              <button onClick={() => onPageChange(current - 1)}>
+              <button
+                onClick={() => onPageChange(current - 1)}
+                aria-label="Página anterior"
+              >
                 <HiOutlineChevronLeft />
               </button>
             </S.PaginationArrow>
@@ -59,12 +65,16 @@ export const Pagination = (props: NavigateProps) => {
               <button
                 onClick={() => onPageChange(current + 1)}
                 disabled={current === pages}
+                aria-label="Próxima página"
               >
                 <HiOutlineChevronRight />
               </button>
             </S.PaginationArrow>
             <S.PaginationArrow>
-              <button onClick={() => onPageChange(pages)}>
+              <button
+                onClick={() => onPageChange(pages)}
+                aria-label="Ultima página"
+              >
                 <HiOutlineChevronDoubleRight />
               </button>
             </S.PaginationArrow>

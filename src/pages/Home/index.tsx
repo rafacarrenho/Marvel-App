@@ -1,8 +1,11 @@
 import { Loader } from "components/Loader";
-import { Main } from "components/Main";
+import { CharactersList } from "components/CharactersList";
 import { Pagination } from "components/Pagination";
 
 import { useHome } from "./useHome";
+import { Search } from "components/Search";
+import * as S from "./styles";
+import { Container } from "components/Container";
 
 export const Home = () => {
   const {
@@ -16,18 +19,18 @@ export const Home = () => {
   } = useHome();
 
   return (
-    <>
-      <Main
-        characters={characters}
-        filter={filter}
-        setFilter={handleChangeFilter}
-      />
-      <Pagination
-        total={totalCharacters}
-        offset={offset}
-        onChange={handleChangeOffset}
-      />
-      <Loader isLoading={isLoading} />
-    </>
+    <S.Wrapper>
+      <Container>
+        <S.Title>Busca de personagens</S.Title>
+        <Search value={filter} onChange={handleChangeFilter} />
+        <CharactersList characters={characters} />
+        <Pagination
+          total={totalCharacters}
+          offset={offset}
+          onChange={handleChangeOffset}
+        />
+        <Loader isLoading={isLoading} />
+      </Container>
+    </S.Wrapper>
   );
 };
