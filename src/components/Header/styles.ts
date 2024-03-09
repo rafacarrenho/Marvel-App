@@ -16,8 +16,8 @@ export const HeaderContainer = styled(Container)`
 `;
 
 export const Logo = styled.img`
-  width: 132px;
-  height: auto;
+  height: 40px;
+  width: auto;
   display: block;
 `;
 

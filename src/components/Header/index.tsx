@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import * as S from "./styles";
-import LogoMarvel from "assets/images/logo-marvel.png";
+import LogoMarvel from "assets/images/logo-marvel.jpg";
 
 export const Header = () => {
   return (
@@ -9,8 +9,8 @@ export const Header = () => {
         <Link to="/">
           <S.Logo
             src={LogoMarvel}
-            width={132}
-            height={99}
+            width={112}
+            height={40}
             alt="Logo escrito Marvel em cor branca com fundo vermelho"
           />
         </Link>
