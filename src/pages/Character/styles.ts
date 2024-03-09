@@ -1,3 +1,5 @@
+import { Container } from "components/Container";
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
@@ -5,6 +7,10 @@ export const Wrapper = styled.div`
   height: calc(100vh - 64px);
   background-color: #e5e5e5;
   overflow-y: scroll;
+  padding: 20px 0;
+`;
+
+export const CustomContainer = styled(Container)`
   position: relative;
 `;
 
@@ -88,18 +94,17 @@ export const ListItems = styled.div`
   }
 `;
 
-export const ButtonBack = styled.button`
-  a {
-    text-decoration: none;
-    display: block;
-    width: 70px;
-    background-color: #fff;
-    color: #555555;
-    padding: 6px;
-    border-radius: 4px;
-    transition: 0.3s;
-    position: absolute;
-    top: 8px;
-    right: 8px;
-  }
+export const ButtonBack = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #555555;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: 0.3s;
+  position: absolute;
+  top: 8px;
+  right: 8px;
 `;
