@@ -4,6 +4,8 @@ import { CharactersListProps } from "./types";
 export const CharactersList = ({ characters }: CharactersListProps) => {
   if (!characters) return <></>;
 
+  console.log(characters);
+
   return (
     <S.Wrapper>
       <S.TitleWrapper>
@@ -18,7 +20,10 @@ export const CharactersList = ({ characters }: CharactersListProps) => {
             <S.CharacterLink to={`/personagem/${character.id}`}>
               <S.ImageWrapper>
                 <S.CharacterImage
-                  src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                  src={`${character.thumbnail.path.replace(
+                    "http://",
+                    "https://"
+                  )}.${character.thumbnail.extension}`}
                   alt={`Foto do personagem: ${character.name}`}
                   height={48}
                   width={48}
