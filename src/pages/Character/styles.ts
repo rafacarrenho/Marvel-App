@@ -107,4 +107,9 @@ export const ButtonBack = styled(Link)`
   position: absolute;
   top: 8px;
   right: 8px;
+
+  &:hover {
+    background-color: #555555;
+    color: #fff;
+  }
 `;
