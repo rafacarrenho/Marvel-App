@@ -5,16 +5,17 @@ import React, {
   ReactNode,
   SetStateAction,
   useContext,
-  useEffect,
   useState,
 } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export type HomeContextType = {
   filter: string;
   setFilter: Dispatch<SetStateAction<string>>;
   offset: number;
-  setOffset: Dispatch<SetStateAction<number>>;
   debouncedFilter: string;
+  currentPage: number;
+  limit: number;
 };
 
 export const HomeContext = createContext<HomeContextType>(
@@ -29,21 +30,21 @@ export const HomeContextProvider: React.FC<HomeContextProviderProps> = ({
   children,
 }) => {
   const [filter, setFilter] = useState("");
-  const [offset, setOffset] = useState(0);
+  const [searchParams] = useSearchParams();
 
   const debouncedFilter = useDebounce(filter, 400);
-
-  useEffect(() => {
-    setOffset(0);
-  }, [debouncedFilter]);
+  const currentPage = Number(searchParams.get("page")) || 1;
+  const limit = 10;
+  const offset = (currentPage - 1) * limit;
 
   return (
     <HomeContext.Provider
       value={{
         filter,
         setFilter,
+        currentPage,
+        limit,
         offset,
-        setOffset,
         debouncedFilter,
       }}
     >

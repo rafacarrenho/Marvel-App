@@ -10,12 +10,12 @@ import { Container } from "components/Container";
 export const Home = () => {
   const {
     filter,
-    offset,
     isLoading,
     characters,
     totalCharacters,
+    currentPage,
+    limit,
     handleChangeFilter,
-    handleChangeOffset,
   } = useHome();
 
   return (
@@ -26,8 +26,8 @@ export const Home = () => {
         <CharactersList characters={characters} />
         <Pagination
           total={totalCharacters}
-          offset={offset}
-          onChange={handleChangeOffset}
+          currentPage={currentPage}
+          limit={limit}
         />
         <Loader isLoading={isLoading} />
       </Container>

@@ -11,12 +11,12 @@ import "./app.css";
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <HomeContextProvider>
-        <Router>
+      <Router>
+        <HomeContextProvider>
           <Header />
           <Routes />
-        </Router>
-      </HomeContextProvider>
+        </HomeContextProvider>
+      </Router>
     </QueryClientProvider>
   );
 }

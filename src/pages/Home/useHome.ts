@@ -2,7 +2,7 @@ import { useHomeContext } from "contexts/HomeContext";
 import { useCharactersService } from "services/characters/useCharactersService";
 
 const useHome = () => {
-  const { filter, setFilter, offset, setOffset, debouncedFilter } =
+  const { filter, setFilter, offset, debouncedFilter, currentPage, limit } =
     useHomeContext();
 
   const { data, isLoading } = useCharactersService(offset, debouncedFilter);
@@ -10,22 +10,18 @@ const useHome = () => {
   const characters = data?.characters;
   const totalCharacters = data?.totalCharacters || 0;
 
-  const handleChangeOffset = (value: number) => {
-    setOffset(value);
-  };
-
   const handleChangeFilter = (value: string) => {
     setFilter(value);
   };
 
   return {
+    limit,
     filter,
-    offset,
     isLoading,
     characters,
+    currentPage,
     totalCharacters,
     handleChangeFilter,
-    handleChangeOffset,
   };
 };
 

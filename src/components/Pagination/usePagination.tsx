@@ -1,31 +1,20 @@
-export type NavigateProps = {
-  total: number;
-  offset: number;
-  onChange: (value: number) => void;
-};
+import { PaginationProps } from "./types";
 
-export const usePagination = ({ total, offset, onChange }: NavigateProps) => {
+export const usePagination = ({
+  total,
+  limit,
+  currentPage,
+}: PaginationProps) => {
   const maxItems = 5;
-  const limit = 10;
   const maxLeft = (maxItems - 1) / 2;
-  const current = offset ? offset / limit + 1 : 1;
   const pages = Math.ceil(total / limit);
-  const first = Math.max(current - maxLeft, 1);
-  const shouldRenderBack = current > 1;
-  const shouldRenderNext = current < pages;
-
-  function onPageChange(page: number) {
-    onChange((page - 1) * limit);
-  }
+  const first = Math.max(currentPage - maxLeft, 1);
 
   return {
     total,
-    onPageChange,
     maxItems,
-    current,
+    currentPage,
     pages,
     first,
-    shouldRenderBack,
-    shouldRenderNext,
   };
 };

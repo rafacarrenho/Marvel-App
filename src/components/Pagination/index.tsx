@@ -5,82 +5,60 @@ import {
   HiOutlineChevronLeft,
 } from "react-icons/hi";
 import * as S from "./styles";
-import { NavigateProps, usePagination } from "./usePagination";
+import { usePagination } from "./usePagination";
+import { PaginationProps } from "./types";
 
-export const Pagination = (props: NavigateProps) => {
-  const {
-    total,
-    onPageChange,
-    maxItems,
-    current,
-    pages,
-    first,
-    shouldRenderBack,
-    shouldRenderNext,
-  } = usePagination(props);
+export const Pagination = (props: PaginationProps) => {
+  const { total, maxItems, currentPage, pages, first } = usePagination(props);
 
   if (!total) return null;
 
   return (
     <S.Wrapper>
-      <ul>
-        {shouldRenderBack && (
-          <>
-            <S.PaginationArrow>
-              <button
-                onClick={() => onPageChange(1)}
-                aria-label="Primeira página"
-              >
-                <HiOutlineChevronDoubleLeft />
-              </button>
-            </S.PaginationArrow>
-            <S.PaginationArrow>
-              <button
-                onClick={() => onPageChange(current - 1)}
-                aria-label="Página anterior"
-              >
-                <HiOutlineChevronLeft />
-              </button>
-            </S.PaginationArrow>
-          </>
-        )}
+      <S.PaginationItem
+        to="/?page=1"
+        aria-label="Primeira página"
+        disabled={currentPage === 1}
+      >
+        <HiOutlineChevronDoubleLeft />
+      </S.PaginationItem>
+      <S.PaginationItem
+        to={`/?page=${currentPage - 1}`}
+        aria-label="Primeira página"
+        disabled={currentPage === 1 || currentPage > pages}
+      >
+        <HiOutlineChevronLeft />
+      </S.PaginationItem>
 
-        {Array.from({ length: maxItems })
-          .map((_, index) => index + first)
-          .map((page, index) => {
-            if (page > pages) return null;
-            return (
-              <S.PaginationItem
-                isActive={page === current}
-                key={pages + page + index}
-              >
-                <button onClick={() => onPageChange(page)}>{page}</button>
-              </S.PaginationItem>
-            );
-          })}
+      {Array.from({ length: maxItems })
+        .map((_, index) => index + first)
+        .map((page, index) => {
+          if (page > pages) return null;
+          return (
+            <S.PaginationItem
+              isActive={page === currentPage}
+              key={pages + page + index}
+              to={`/?page=${page}`}
+            >
+              {page}
+            </S.PaginationItem>
+          );
+        })}
 
-        {shouldRenderNext && (
-          <>
-            <S.PaginationArrow>
-              <button
-                onClick={() => onPageChange(current + 1)}
-                disabled={current === pages}
-                aria-label="Próxima página"
-              >
-                <HiOutlineChevronRight />
-              </button>
-            </S.PaginationArrow>
-            <S.PaginationArrow>
-              <button
-                onClick={() => onPageChange(pages)}
-                aria-label="Ultima página"
-              >
-                <HiOutlineChevronDoubleRight />
-              </button>
-            </S.PaginationArrow>
-          </>
-        )}
-      </ul>
+      <S.PaginationItem
+        aria-label="Próxima página"
+        to={`/?page=${currentPage + 1}`}
+        disabled={currentPage >= pages}
+      >
+        <HiOutlineChevronRight />
+      </S.PaginationItem>
+      <S.PaginationItem
+        aria-label="Ultima página"
+        to={`/?page=${pages}`}
+        disabled={currentPage >= pages}
+      >
+        <HiOutlineChevronDoubleRight />
+      </S.PaginationItem>
     </S.Wrapper>
   );
 };
