@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import { api } from "services/api";
-import { GetCharactersResult } from "./types";
+import { CharactersDTO, GetCharactersResult } from "./types";
+import { charactersModel } from "./charactersModel";
 
 function removeEmptyParams(params: any) {
   for (const key of Object.keys(params)) {
@@ -11,7 +12,7 @@ function removeEmptyParams(params: any) {
   return params;
 }
 
-export async function getCharacters(
+async function getCharacters(
   offset: number,
   filter: string
 ): Promise<GetCharactersResult> {
@@ -23,19 +24,15 @@ export async function getCharacters(
   });
 
   return {
-    characters: data.data.results,
+    characters: data.data.results.map((value: CharactersDTO) =>
+      charactersModel(value)
+    ),
     totalCharacters: data.data.total,
   };
 }
 
-const TEN_MINUTES = 1000 * 60 * 10;
-
 export const useCharactersService = (offset: number, filter: string) => {
-  return useQuery(
-    ["characters", { offset, filter }],
-    () => getCharacters(offset, filter),
-    {
-      staleTime: TEN_MINUTES,
-    }
+  return useQuery(["characters", { offset, filter }], () =>
+    getCharacters(offset, filter)
   );
 };

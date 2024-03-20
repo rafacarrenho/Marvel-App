@@ -1,5 +1,5 @@
-import { CharacterType } from "services/characters/types";
+import { CharactersModel } from "services/characters/types";
 
 export type CharactersListProps = {
-  characters: CharacterType[] | undefined;
+  characters: CharactersModel[] | undefined;
 };

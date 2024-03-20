@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router";
-import { useCharacterService } from "services/characters/useCharacterService";
+import { useCharacterService } from "services/character/useCharacterService";
 
 export enum CharacterTabEnum {
   series = "series",

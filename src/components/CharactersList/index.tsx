@@ -18,10 +18,7 @@ export const CharactersList = ({ characters }: CharactersListProps) => {
             <S.CharacterLink to={`/personagem/${character.id}`}>
               <S.ImageWrapper>
                 <S.CharacterImage
-                  src={`${character.thumbnail.path.replace(
-                    "http://",
-                    "https://"
-                  )}.${character.thumbnail.extension}`}
+                  src={character.image}
                   alt={`Foto do personagem: ${character.name}`}
                   height={48}
                   width={48}
@@ -29,14 +26,14 @@ export const CharactersList = ({ characters }: CharactersListProps) => {
                 <strong>{character.name}</strong>
               </S.ImageWrapper>
               <S.SeriesWrapper>
-                {character.series.items.slice(0, 3).map((serie) => (
+                {character.series.map((serie) => (
                   <S.CharacterInfo key={serie.name}>
                     {serie.name}
                   </S.CharacterInfo>
                 ))}
               </S.SeriesWrapper>
               <S.EventsWrapper>
-                {character.events.items.slice(0, 3).map((event) => (
+                {character.events.map((event) => (
                   <S.CharacterInfo key={event.name}>
                     {event.name}
                   </S.CharacterInfo>

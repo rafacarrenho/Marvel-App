@@ -6,10 +6,11 @@ type ParticipationDTO = {
   items: ParticipationItemsDTO[];
 };
 
-export type CharactersDTO = {
+export type CharacterDTO = {
   id: number;
   name: string;
   series: ParticipationDTO;
+  stories: ParticipationDTO;
   events: ParticipationDTO;
   thumbnail: {
     path: string;
@@ -21,15 +22,11 @@ type ParticipationModel = {
   name: string;
 };
 
-export type CharactersModel = {
+export type CharacterModel = {
   id: number;
   name: string;
   series: ParticipationModel[];
+  stories: ParticipationModel[];
   events: ParticipationModel[];
   image: string;
-};
-
-export type GetCharactersResult = {
-  characters: CharactersModel[];
-  totalCharacters: number;
 };

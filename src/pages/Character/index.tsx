@@ -30,12 +30,7 @@ export const Character = () => {
       <S.CustomContainer>
         <S.ButtonBack to="/">Voltar</S.ButtonBack>
         <S.Header>
-          <img
-            src={`${character.thumbnail.path.replace("http://", "https://")}.${
-              character.thumbnail.extension
-            }`}
-            alt={character.name}
-          />
+          <img src={character.image} alt={character.name} />
           <div>
             <h1>{character.name}</h1>
             <S.Button
@@ -61,7 +56,7 @@ export const Character = () => {
         <S.ListItems>
           <h2>{title[activeButton]}</h2>
           <ul>
-            {character[activeButton].items.map((item) => (
+            {character[activeButton].map((item) => (
               <li key={item.name}>{item.name}</li>
             ))}
           </ul>
