@@ -2,9 +2,7 @@ import * as S from "./styles";
 import { CharactersListProps } from "./types";
 
 export const CharactersList = ({ characters }: CharactersListProps) => {
-  if (!characters) return <></>;
-
-  console.log(characters);
+  if (!characters?.length) return <></>;
 
   return (
     <S.Wrapper>

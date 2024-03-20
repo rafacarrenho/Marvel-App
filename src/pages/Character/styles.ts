@@ -64,15 +64,15 @@ export const Header = styled.div`
 `;
 
 type ButtonProps = {
-  isActive: boolean;
+  $isActive: boolean;
 };
 
 export const Button = styled.button<ButtonProps>`
-  ${({ isActive }) => css`
+  ${({ $isActive }) => css`
     display: block;
     width: 200px;
-    background-color: ${isActive ? "#555555" : "#fff"};
-    color: ${isActive ? "#fff" : "#555555"};
+    background-color: ${$isActive ? "#555555" : "#fff"};
+    color: ${$isActive ? "#fff" : "#555555"};
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 4px;

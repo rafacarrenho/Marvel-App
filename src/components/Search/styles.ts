@@ -14,12 +14,17 @@ export const SearchInputWrapper = styled.div`
   max-width: 295px;
 
   svg {
-    font-size: 14px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 12px;
     color: #555555;
+    cursor: pointer;
+    transition: color 0.3s ease-out;
+
+    &:hover {
+      color: #333333;
+    }
   }
 `;
 

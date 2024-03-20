@@ -36,7 +36,7 @@ export const Pagination = (props: PaginationProps) => {
           if (page > pages) return null;
           return (
             <S.PaginationItem
-              isActive={page === currentPage}
+              $isActive={page === currentPage}
               key={pages + page + index}
               to={`/?page=${page}`}
             >

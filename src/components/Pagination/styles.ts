@@ -22,7 +22,7 @@ export const Wrapper = styled.nav`
 `;
 
 type PaginationItemProps = {
-  isActive?: boolean;
+  $isActive?: boolean;
   disabled?: boolean;
 };
 
@@ -38,7 +38,7 @@ const PaginationItemModifier = {
 };
 
 export const PaginationItem = styled(Link)<PaginationItemProps>`
-  ${({ isActive, disabled }) => css`
+  ${({ $isActive, disabled }) => css`
     border-radius: 5px;
     color: #555555;
     font-weight: 500;
@@ -57,7 +57,7 @@ export const PaginationItem = styled(Link)<PaginationItemProps>`
       color: #fff;
     }
 
-    ${isActive && PaginationItemModifier.active}
+    ${$isActive && PaginationItemModifier.active}
     ${disabled && PaginationItemModifier.disabled}
   `}
 `;

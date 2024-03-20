@@ -39,19 +39,19 @@ export const Character = () => {
           <div>
             <h1>{character.name}</h1>
             <S.Button
-              isActive={activeButton === CharacterTabEnum.series}
+              $isActive={activeButton === CharacterTabEnum.series}
               onClick={() => setActiveButton(CharacterTabEnum.series)}
             >
               Series
             </S.Button>
             <S.Button
-              isActive={activeButton === CharacterTabEnum.events}
+              $isActive={activeButton === CharacterTabEnum.events}
               onClick={() => setActiveButton("events")}
             >
               Eventos
             </S.Button>
             <S.Button
-              isActive={activeButton === CharacterTabEnum.stories}
+              $isActive={activeButton === CharacterTabEnum.stories}
               onClick={() => setActiveButton(CharacterTabEnum.stories)}
             >
               Histórias
